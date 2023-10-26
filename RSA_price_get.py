@@ -20,7 +20,7 @@ def RSA_price_get(
     get_rf_subject_ids_result = requests.get(RSA_API['get_rf_subject_ids'].format(report_date))
     subjects = {row['subjectName']: row['subjectRF'] for row in get_rf_subject_ids_result.json()}
 
-    # получаем марок автомобилей
+    # получаем cписок марок автомобилей
     get_oem_ids_result = requests.get(RSA_API['get_oem_ids'].format(report_date))
     brands = {row['name']: row['id'] for row in get_oem_ids_result.json()}
 
@@ -43,6 +43,6 @@ def RSA_price_get(
         }
 
 # Пример испозования:
-# print(RSA_price_get('21.10.2023', '034115417', 'Свердловская область', 'Audi'))
+# RSA_price_get('21.10.2023', '034115417', 'Свердловская область', 'Audi')
 # Результат:
 # {'spare_name': 'деталь', 'reg_coef': '1.05000', 'spare_price': '20232.21', 'base_cost': '19268.77'}
